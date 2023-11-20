@@ -1,0 +1,36 @@
+<ul>
+  <li *ngFor="let item of todoList$ | async">
+    <app-item-list
+      [todoItem]="item"
+      (markTaskAsDone)="markTaskAsDone($event)"
+    />
+  </li>
+</ul>
+<section>
+  <h2>Last updated task</h2>
+  <ng-container *ngIf="updatedTask$ | async as updatedTask">
+    <app-updated-item [updatedTask]="updatedTask" />
+  </ng-container>
+</section>
+
+<!-- <ul>
+  @for (item of todoList$ | async; track $index) {
+  <li>
+    <label for="{{ item.id }}">
+      <input
+        id="{{ item.id }}"
+        type="checkbox"
+        [checked]="item.completed"
+        (change)="markTaskAsDone(item)"
+        [(ngModel)]="item.completed"
+      />{{ item.title }}
+    </label>
+  </li>
+  }
+</ul>
+<section>
+  <h2>Last updated task</h2>
+  @if (updatedTask$ | async; as updatedTask) {
+  <span>{{ updatedTask.title }}</span>
+  }
+</section> -->

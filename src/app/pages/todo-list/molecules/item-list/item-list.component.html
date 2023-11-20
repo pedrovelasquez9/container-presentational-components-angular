@@ -1,0 +1,9 @@
+<label for="{{ todoItem.id }}">
+  <input
+    id="{{ todoItem.id }}"
+    type="checkbox"
+    [checked]="todoItem.completed"
+    (change)="markTaskAsDone.emit(todoItem)"
+    [(ngModel)]="todoItem.completed"
+  />{{ todoItem.title }}
+</label>
